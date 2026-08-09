@@ -1,0 +1,16 @@
+{
+  "name": "SongDuel",
+  "short_name": "SongDuel",
+  "description": "Your music. Your ranking.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#030303",
+  "theme_color": "#030303",
+  "icons": [
+    {
+      "src": "assets/apple-touch-icon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
