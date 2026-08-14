@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ssmkconsulting.github.io/songduel.web/sitemap.xml
+Sitemap: https://songduel.app/sitemap.xml
