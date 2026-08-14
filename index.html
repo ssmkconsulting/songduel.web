@@ -4,13 +4,17 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#050403">
-  <meta name="description" content="SongDuel turns quick head-to-head choices into a personal ranking of the music you already love.">
+  <meta name="description" content="Rank your Apple Music songs head to head, hear optional previews, track movement and history, and tune every comparison in SongDuel.">
   <meta property="og:title" content="SongDuel — Your music. Your ranking.">
-  <meta property="og:description" content="Pick between two songs, watch your evolving Top 10 take shape, and build confidence with every comparison.">
+  <meta property="og:description" content="Duel your Apple Music songs, build an evolving Top 10, and personalize previews, pick timing, Daily Goal, and more.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://songduel.app/">
   <meta property="og:image" content="https://songduel.app/assets/songduel-logo.png">
+  <meta property="og:image:alt" content="SongDuel app icon">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="SongDuel — Your music. Your ranking.">
+  <meta name="twitter:description" content="Duel your Apple Music songs and build a personal ranking that gets sharper with every pick.">
+  <meta name="twitter:image" content="https://songduel.app/assets/songduel-logo.png">
   <title>SongDuel — Your music. Your ranking.</title>
   <link rel="icon" href="assets/favicon.png" type="image/png">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
@@ -118,13 +122,13 @@
             <div class="step-number">02</div>
             <div class="versus-mini" aria-hidden="true"><span>A</span><b>VS</b><span>B</span></div>
             <h3>Choose your favorite</h3>
-            <p>Tap either song card. During the short confirmation, tap again to cancel, switch your choice, or skip the matchup.</p>
+            <p>Choose a 3–10 second selection window. Tap again to cancel, choose the other song, or Skip and use the three-second Undo window.</p>
           </article>
           <article class="step-card" data-reveal>
             <div class="step-number">03</div>
             <div class="step-icon icon-podium" aria-hidden="true"><span></span><span></span><span></span></div>
             <h3>Watch your taste emerge</h3>
-            <p>Top Songs and History unlock after three picks. Your evolving Top 10 gets more confident as the evidence grows.</p>
+            <p>Three quick picks unlock Top Songs and History. SongDuel shows your warm-up progress, then celebrates each confidence milestone.</p>
           </article>
         </div>
       </div>
@@ -135,24 +139,27 @@
         <div class="demo-copy" data-reveal>
           <span class="kicker">The heart of SongDuel</span>
           <h2 id="demo-title">Don’t overthink it.<br><em>Pick one.</em></h2>
-          <p>Tap the song you want to hear. SongDuel’s Elo-based ranking adjusts to the strength of every matchup—not just raw win counts.</p>
+          <p>Tap the song you want to hear. The demo uses SongDuel’s default three-second selection window, so you can cancel or change your mind before the ranking updates.</p>
           <div class="demo-result" aria-live="polite" data-demo-result>
             <span>ROUND <b data-round>01</b></span>
             <p>Choose a track to see your ranking react.</p>
           </div>
         </div>
-        <div class="duel-stage" data-reveal>
-          <button class="duel-card duel-blue" type="button" data-choice="Midnight City" aria-label="Choose Midnight City by M83">
-            <span class="album-art"><i>M</i><b></b></span>
-            <span class="duel-meta"><strong>Midnight City</strong><small>M83 · Hurry Up, We’re Dreaming</small></span>
-            <span class="pick-label">Pick this song <i>→</i></span>
-          </button>
-          <div class="vs-badge" aria-hidden="true">VS</div>
-          <button class="duel-card duel-purple" type="button" data-choice="Pink + White" aria-label="Choose Pink + White by Frank Ocean">
-            <span class="album-art"><i>P</i><b></b></span>
-            <span class="duel-meta"><strong>Pink + White</strong><small>Frank Ocean · Blonde</small></span>
-            <span class="pick-label">Pick this song <i>→</i></span>
-          </button>
+        <div class="duel-demo" data-reveal>
+          <div class="duel-stage">
+            <button class="duel-card duel-blue" type="button" data-choice="Midnight City" aria-label="Choose Midnight City by M83">
+              <span class="album-art"><i>M</i><b></b></span>
+              <span class="duel-meta"><strong>Midnight City</strong><small>M83 · Hurry Up, We’re Dreaming</small></span>
+              <span class="pick-label">Pick this song <i>→</i></span>
+            </button>
+            <div class="vs-badge" aria-hidden="true">VS</div>
+            <button class="duel-card duel-purple" type="button" data-choice="Pink + White" aria-label="Choose Pink + White by Frank Ocean">
+              <span class="album-art"><i>P</i><b></b></span>
+              <span class="duel-meta"><strong>Pink + White</strong><small>Frank Ocean · Blonde</small></span>
+              <span class="pick-label">Pick this song <i>→</i></span>
+            </button>
+          </div>
+          <button class="demo-skip" type="button" data-demo-skip>Skip this matchup</button>
         </div>
       </div>
     </section>
@@ -188,21 +195,22 @@
             <ul>
               <li>Most compared and newest additions</li>
               <li>Monthly and yearly movers</li>
-              <li>Historical number ones and rankings</li>
+              <li>Confidence, stability, and historical number ones</li>
             </ul>
           </article>
           <article class="feature-panel copy-panel profile-copy" data-reveal>
-            <span class="feature-index">03 / YOUR ROUTINE</span>
-            <h3>Build the habit your way.</h3>
-            <p>Set a daily comparison goal, choose an optional reminder, and keep every account and learning control close at hand.</p>
+            <span class="feature-index">03 / YOUR EXPERIENCE</span>
+            <h3>Every duel, your way.</h3>
+            <p>Profile brings the sound, timing, routine, learning, music-service, and account controls together in one polished home.</p>
             <ul>
-              <li>Choose a daily goal from 1 to 100</li>
-              <li>Add an on-device profile photo</li>
-              <li>Replay the tutorial whenever you want</li>
+              <li>Optional previews: right song, then left, 5–30 seconds each</li>
+              <li>Selection time from 3–10 seconds; Skip has a three-second Undo</li>
+              <li>Daily Goal from 5–100 in steps of five, plus an optional reminder</li>
+              <li>Intro music, Apple Music sync, local photo, and replayable tutorial</li>
             </ul>
           </article>
           <div class="feature-panel image-panel profile-panel" data-reveal>
-            <div class="phone feature-phone"><div class="phone-island" aria-hidden="true"></div><img src="assets/screen-profile.jpg" alt="SongDuel Profile screen showing daily goal and reminder controls" loading="lazy" width="736" height="1600"></div>
+            <div class="phone feature-phone"><div class="phone-island" aria-hidden="true"></div><img src="assets/screen-profile.jpg" alt="SongDuel Profile screen showing intro music, automatic preview, preview length, selection time, and Daily Goal settings" loading="lazy" width="736" height="1600"></div>
           </div>
         </div>
         <div class="feature-strip" data-reveal>
@@ -245,7 +253,7 @@
         <div class="faq-list" data-reveal>
           <details>
             <summary>How does SongDuel rank my music?<span></span></summary>
-            <p>Each head-to-head pick updates both songs with an Elo-style rating. Your evolving Top 10 appears after a three-pick warm-up, with confidence milestones for the Top 3 at 250 picks, Top 6 at 500, and Top 10 at 1,000.</p>
+            <p>Each head-to-head pick updates both songs with an Elo-style rating. A guided three-pick warm-up unlocks Top Songs and History, then confidence milestones arrive for the Top 3 at 250 picks, Top 6 at 500, and Top 10 at 1,000.</p>
           </details>
           <details>
             <summary>Do I need an Apple Music subscription?<span></span></summary>
@@ -254,6 +262,10 @@
           <details>
             <summary>Are Most Listened songs part of my ranking?<span></span></summary>
             <p>No. Apple Music listening activity is shown separately and without rank numbers. Only your head-to-head SongDuel picks determine your evolving Top 10.</p>
+          </details>
+          <details>
+            <summary>Can I control previews and pick timing?<span></span></summary>
+            <p>Yes. Automatic song preview is optional and off by default. In Profile, choose 5, 10, 15, 20, 25, or 30 seconds per song; SongDuel previews the right song, then the left. You can also set the selection window from 3 to 10 seconds. Skip always includes a three-second Undo window.</p>
           </details>
           <details>
             <summary>Can I delete my data?<span></span></summary>

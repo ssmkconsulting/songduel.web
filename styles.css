@@ -226,6 +226,7 @@ h2 em, h1 span { color: var(--gold-bright); font-style: normal; }
 .demo-result { margin-top: 34px; padding: 18px; border-left: 2px solid var(--gold); background: linear-gradient(90deg, rgba(223,165,44,.09), transparent); }
 .demo-result span { color: var(--gold); font-size: .67rem; font-weight: 850; letter-spacing: .15em; }
 .demo-result p { margin: 5px 0 0; color: #cfcbc4; font-size: .9rem; }
+.duel-demo { min-width: 0; }
 .duel-stage { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 .duel-card { min-width: 0; padding: 14px 14px 20px; text-align: left; border: 1px solid rgba(255,255,255,.1); background: linear-gradient(145deg, #12100c, #070706); border-radius: 26px; cursor: pointer; transition: transform .25s, border-color .25s, box-shadow .25s; }
 .duel-card:hover, .duel-card.selected { transform: translateY(-7px); border-color: rgba(255,214,107,.48); box-shadow: 0 22px 55px rgba(0,0,0,.4), 0 0 36px rgba(223,165,44,.08); }
@@ -243,6 +244,9 @@ h2 em, h1 span { color: var(--gold-bright); font-style: normal; }
 .pick-label { display: flex; justify-content: space-between; align-items: center; margin: 0 7px; padding-top: 13px; border-top: 1px solid rgba(255,255,255,.08); color: #99958e; font-size: .72rem; font-weight: 750; text-transform: uppercase; letter-spacing: .08em; }
 .pick-label i { color: var(--gold-bright); font-style: normal; }
 .vs-badge { position: absolute; z-index: 3; left: 50%; top: 42%; transform: translate(-50%, -50%); display: grid; place-items: center; width: 52px; height: 52px; border: 3px solid #fff3ca; border-radius: 50%; color: #111; background: linear-gradient(145deg, #fff6d9, #edae25); font-size: .75rem; font-weight: 950; box-shadow: 0 0 34px rgba(223,165,44,.5); }
+.demo-skip { width: 100%; min-height: 54px; margin-top: 14px; border: 1px solid rgba(255,214,107,.38); border-radius: 17px; color: #080603; background: linear-gradient(110deg, #fff4d1, #e9a515); font-weight: 900; cursor: pointer; transition: color .2s, background .2s, border-color .2s, transform .2s; }
+.demo-skip:hover { transform: translateY(-2px); }
+.demo-skip.pending { color: var(--gold-bright); border-color: rgba(255,214,107,.72); background: linear-gradient(145deg, #171006, #050403); }
 
 .features { background: linear-gradient(#090704, #030303 42%); }
 .feature-showcase { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
