@@ -38,17 +38,82 @@ if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-mot
 const choiceButtons = document.querySelectorAll('[data-choice]');
 const result = document.querySelector('[data-demo-result] p');
 const roundLabel = document.querySelector('[data-round]');
+const skipButton = document.querySelector('[data-demo-skip]');
 let round = 1;
+let pendingChoice = null;
+let actionTimer = null;
+let countdownTimer = null;
+
+const clearTimers = () => {
+  window.clearTimeout(actionTimer);
+  window.clearInterval(countdownTimer);
+  actionTimer = null;
+  countdownTimer = null;
+};
+
+const resetDemoActions = () => {
+  clearTimers();
+  pendingChoice = null;
+  choiceButtons.forEach((item) => item.classList.remove('selected'));
+  skipButton?.classList.remove('pending');
+  if (skipButton) skipButton.textContent = 'Skip this matchup';
+};
+
+const advanceRound = () => {
+  round += 1;
+  if (roundLabel) roundLabel.textContent = String(round).padStart(2, '0');
+};
+
+const beginCountdown = (onTick) => {
+  let seconds = 3;
+  onTick(seconds);
+  countdownTimer = window.setInterval(() => {
+    seconds -= 1;
+    if (seconds > 0) onTick(seconds);
+  }, 1000);
+};
 
 choiceButtons.forEach((button) => {
   button.addEventListener('click', () => {
-    choiceButtons.forEach((item) => item.classList.remove('selected'));
+    if (pendingChoice === button) {
+      resetDemoActions();
+      if (result) result.textContent = 'Pick canceled. The matchup is still yours to decide.';
+      return;
+    }
+
+    resetDemoActions();
+    pendingChoice = button;
     button.classList.add('selected');
-    round += 1;
-    if (roundLabel) roundLabel.textContent = String(round).padStart(2, '0');
-    if (result) result.textContent = `${button.dataset.choice} wins. Your live ranking just got a little sharper.`;
-    window.setTimeout(() => button.classList.remove('selected'), 900);
+    beginCountdown((seconds) => {
+      if (result) result.textContent = `${button.dataset.choice} selected — ${seconds} second${seconds === 1 ? '' : 's'} to cancel or switch.`;
+    });
+    actionTimer = window.setTimeout(() => {
+      const winner = button.dataset.choice;
+      resetDemoActions();
+      advanceRound();
+      if (result) result.textContent = `${winner} wins. Your live ranking just got a little sharper.`;
+    }, 3000);
   });
+});
+
+skipButton?.addEventListener('click', () => {
+  if (skipButton.classList.contains('pending')) {
+    resetDemoActions();
+    if (result) result.textContent = 'Skip undone. Keep this matchup or pick either song.';
+    return;
+  }
+
+  resetDemoActions();
+  skipButton.classList.add('pending');
+  beginCountdown((seconds) => {
+    skipButton.textContent = `Undo skip · ${seconds}`;
+    if (result) result.textContent = `Skip pending — ${seconds} second${seconds === 1 ? '' : 's'} to undo or choose a song.`;
+  });
+  actionTimer = window.setTimeout(() => {
+    resetDemoActions();
+    advanceRound();
+    if (result) result.textContent = 'Matchup skipped. No winner was recorded.';
+  }, 3000);
 });
 
 document.querySelectorAll('[data-year]').forEach((node) => {
