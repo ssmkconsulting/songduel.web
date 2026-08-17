@@ -64,8 +64,8 @@ const advanceRound = () => {
   if (roundLabel) roundLabel.textContent = String(round).padStart(2, '0');
 };
 
-const beginCountdown = (onTick) => {
-  let seconds = 3;
+const beginCountdown = (duration, onTick) => {
+  let seconds = duration;
   onTick(seconds);
   countdownTimer = window.setInterval(() => {
     seconds -= 1;
@@ -84,7 +84,7 @@ choiceButtons.forEach((button) => {
     resetDemoActions();
     pendingChoice = button;
     button.classList.add('selected');
-    beginCountdown((seconds) => {
+    beginCountdown(3, (seconds) => {
       if (result) result.textContent = `${button.dataset.choice} selected — ${seconds} second${seconds === 1 ? '' : 's'} to cancel or switch.`;
     });
     actionTimer = window.setTimeout(() => {
@@ -105,7 +105,7 @@ skipButton?.addEventListener('click', () => {
 
   resetDemoActions();
   skipButton.classList.add('pending');
-  beginCountdown((seconds) => {
+  beginCountdown(2, (seconds) => {
     skipButton.textContent = `Undo skip · ${seconds}`;
     if (result) result.textContent = `Skip pending — ${seconds} second${seconds === 1 ? '' : 's'} to undo or choose a song.`;
   });
@@ -113,7 +113,7 @@ skipButton?.addEventListener('click', () => {
     resetDemoActions();
     advanceRound();
     if (result) result.textContent = 'Matchup skipped. No winner was recorded.';
-  }, 3000);
+  }, 2000);
 });
 
 document.querySelectorAll('[data-year]').forEach((node) => {
