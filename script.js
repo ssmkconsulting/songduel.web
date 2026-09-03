@@ -127,16 +127,11 @@ if (feedbackForm) {
   const categoryInput = feedbackForm.querySelector('[data-feedback-category]');
   const messageInput = feedbackForm.querySelector('[data-feedback-message]');
   const messageCount = feedbackForm.querySelector('[data-feedback-count]');
-  const screenshotInput = feedbackForm.querySelector('[data-feedback-screenshots]');
-  const screenshotPicker = feedbackForm.querySelector('[data-screenshot-picker]');
-  const screenshotPreviews = feedbackForm.querySelector('[data-screenshot-previews]');
   const followUpInput = feedbackForm.querySelector('[data-feedback-follow-up]');
   const emailField = feedbackForm.querySelector('[data-feedback-email-field]');
   const emailInput = feedbackForm.querySelector('[data-feedback-email]');
   const copyButton = feedbackForm.querySelector('[data-copy-feedback]');
   const feedbackStatus = feedbackForm.querySelector('[data-feedback-status]');
-  let selectedScreenshots = [];
-  let previewUrls = [];
 
   const updateStatus = (message) => {
     feedbackStatus.textContent = message;
@@ -144,7 +139,6 @@ if (feedbackForm) {
 
   const buildFeedbackDetails = () => {
     const sharesEmail = followUpInput.checked;
-    const screenshotNames = selectedScreenshots.map((file) => `- ${file.name}`).join('\n');
     return [
       'SongDuel website feedback',
       '',
@@ -154,78 +148,8 @@ if (feedbackForm) {
       'Feedback:',
       messageInput.value.trim(),
       '',
-      selectedScreenshots.length
-        ? `Screenshots selected (please attach these files before sending):\n${screenshotNames}`
-        : 'Screenshots: None selected',
-      '',
       'Sent from songduel.app'
     ].join('\n');
-  };
-
-  const renderScreenshots = () => {
-    previewUrls.forEach((url) => URL.revokeObjectURL(url));
-    previewUrls = [];
-    screenshotPreviews.replaceChildren();
-
-    selectedScreenshots.forEach((file, index) => {
-      const previewUrl = URL.createObjectURL(file);
-      previewUrls.push(previewUrl);
-
-      const item = document.createElement('div');
-      item.className = 'screenshot-preview';
-
-      const image = document.createElement('img');
-      image.src = previewUrl;
-      image.alt = `Selected screenshot ${index + 1}`;
-
-      const name = document.createElement('small');
-      name.textContent = file.name;
-
-      const removeButton = document.createElement('button');
-      removeButton.className = 'screenshot-remove';
-      removeButton.type = 'button';
-      removeButton.setAttribute('aria-label', `Remove ${file.name}`);
-      removeButton.textContent = '×';
-      removeButton.addEventListener('click', () => {
-        selectedScreenshots.splice(index, 1);
-        renderScreenshots();
-        updateStatus('Screenshot removed.');
-      });
-
-      item.append(image, name, removeButton);
-      screenshotPreviews.append(item);
-    });
-  };
-
-  const addScreenshots = (files) => {
-    const incomingFiles = Array.from(files);
-    const imageFiles = incomingFiles.filter((file) => file.type.startsWith('image/') || /\.(heic|heif)$/i.test(file.name));
-    const acceptableFiles = imageFiles.filter((file) => file.size <= 10 * 1024 * 1024);
-    const combined = [...selectedScreenshots];
-    let omittedForLimit = false;
-
-    acceptableFiles.forEach((file) => {
-      const duplicate = combined.some((item) => item.name === file.name && item.size === file.size && item.lastModified === file.lastModified);
-      if (duplicate) return;
-      if (combined.length < 3) {
-        combined.push(file);
-      } else {
-        omittedForLimit = true;
-      }
-    });
-
-    selectedScreenshots = combined;
-    renderScreenshots();
-
-    if (!imageFiles.length && incomingFiles.length) {
-      updateStatus('Please choose an image file.');
-    } else if (acceptableFiles.length < imageFiles.length) {
-      updateStatus('Each screenshot must be 10 MB or smaller.');
-    } else if (omittedForLimit) {
-      updateStatus('You can include up to three screenshots.');
-    } else if (selectedScreenshots.length) {
-      updateStatus(`${selectedScreenshots.length} screenshot${selectedScreenshots.length === 1 ? '' : 's'} ready. Remember to attach ${selectedScreenshots.length === 1 ? 'it' : 'them'} to the email draft.`);
-    }
   };
 
   messageInput.addEventListener('input', () => {
@@ -236,35 +160,6 @@ if (feedbackForm) {
     emailField.hidden = !followUpInput.checked;
     emailInput.required = followUpInput.checked;
     if (followUpInput.checked) emailInput.focus();
-  });
-
-  screenshotInput.addEventListener('change', () => {
-    addScreenshots(screenshotInput.files);
-    screenshotInput.value = '';
-  });
-
-  screenshotPicker.addEventListener('keydown', (event) => {
-    if (event.key !== 'Enter' && event.key !== ' ') return;
-    event.preventDefault();
-    screenshotInput.click();
-  });
-
-  ['dragenter', 'dragover'].forEach((eventName) => {
-    screenshotPicker.addEventListener(eventName, (event) => {
-      event.preventDefault();
-      screenshotPicker.classList.add('dragging');
-    });
-  });
-
-  ['dragleave', 'drop'].forEach((eventName) => {
-    screenshotPicker.addEventListener(eventName, (event) => {
-      event.preventDefault();
-      screenshotPicker.classList.remove('dragging');
-    });
-  });
-
-  screenshotPicker.addEventListener('drop', (event) => {
-    addScreenshots(event.dataTransfer.files);
   });
 
   const validateFeedback = () => {
@@ -287,9 +182,7 @@ if (feedbackForm) {
 
     const subject = `SongDuel feedback — ${categoryInput.value}`;
     const mailto = `mailto:${feedbackRecipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(buildFeedbackDetails())}`;
-    updateStatus(selectedScreenshots.length
-      ? 'Your email draft should open now. Attach the selected screenshots, review the message, and press Send.'
-      : 'Your email draft should open now. Review the message and press Send.');
+    updateStatus('Your email draft should open now. Review the message and press Send.');
     window.location.href = mailto;
   });
 
@@ -312,9 +205,5 @@ if (feedbackForm) {
       helper.remove();
       updateStatus('Feedback details copied. Paste them into an email to ssmk.consulting@icloud.com.');
     }
-  });
-
-  window.addEventListener('pagehide', () => {
-    previewUrls.forEach((url) => URL.revokeObjectURL(url));
   });
 }

@@ -326,27 +326,14 @@ h2 em, h1 span { color: var(--gold-bright); font-style: normal; }
 .feedback-form-heading span { font-size: 1.18rem; font-weight: 850; }
 .feedback-form-heading small { color: #77736c; font-size: .72rem; }
 .form-field { margin-bottom: 24px; }
-.form-field label, .field-label { display: flex; justify-content: space-between; gap: 12px; margin-bottom: 8px; color: #e9e5dd; font-size: .8rem; font-weight: 760; }
-.form-field label > span, .field-label > span { color: #77736c; font-size: .65rem; font-weight: 650; letter-spacing: .08em; text-transform: uppercase; }
+.form-field label { display: flex; justify-content: space-between; gap: 12px; margin-bottom: 8px; color: #e9e5dd; font-size: .8rem; font-weight: 760; }
+.form-field label > span { color: #77736c; font-size: .65rem; font-weight: 650; letter-spacing: .08em; text-transform: uppercase; }
 .form-field input, .form-field select, .form-field textarea { width: 100%; color: #f8f7f4; border: 1px solid rgba(255,255,255,.12); border-radius: 13px; outline: none; background: #090806; transition: border-color .2s, box-shadow .2s, background .2s; }
 .form-field input, .form-field select { min-height: 50px; padding: 0 14px; }
 .form-field textarea { min-height: 170px; padding: 13px 14px; line-height: 1.55; resize: vertical; }
 .form-field input::placeholder, .form-field textarea::placeholder { color: #65615b; }
 .form-field input:focus, .form-field select:focus, .form-field textarea:focus { border-color: rgba(255,214,107,.65); background: #0d0b08; box-shadow: 0 0 0 3px rgba(223,165,44,.1); }
 .field-meta { display: flex; justify-content: space-between; gap: 16px; margin-top: 7px; color: #77736c; font-size: .68rem; }
-.screenshot-picker { min-height: 98px; padding: 18px; display: flex; align-items: center; justify-content: flex-start; gap: 14px; cursor: pointer; border: 1px dashed rgba(255,214,107,.3); border-radius: 16px; background: rgba(223,165,44,.045); transition: border-color .2s, background .2s; }
-.screenshot-picker:hover, .screenshot-picker.dragging { border-color: var(--gold-bright); background: rgba(223,165,44,.08); }
-.screenshot-picker:focus-visible, .screenshot-picker:focus-within { outline: 2px solid var(--gold-bright); outline-offset: 3px; }
-.screenshot-picker-icon { flex: 0 0 auto; display: grid; place-items: center; width: 45px; height: 45px; color: var(--gold-bright); border: 1px solid rgba(255,214,107,.23); border-radius: 13px; background: #110e08; font-size: 1.35rem; }
-.screenshot-picker > span:last-child { display: flex; flex-direction: column; gap: 1px; }
-.screenshot-picker strong { color: #ece8e0; font-size: .84rem; }
-.screenshot-picker small { color: #77736c; font-size: .7rem; font-weight: 550; }
-.screenshot-previews { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 9px; }
-.screenshot-preview { position: relative; min-width: 0; margin-top: 10px; padding: 7px; border: 1px solid rgba(255,255,255,.09); border-radius: 13px; background: #090806; }
-.screenshot-preview img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 8px; }
-.screenshot-preview small { display: block; padding: 6px 2px 1px; overflow: hidden; color: #918d85; font-size: .62rem; text-overflow: ellipsis; white-space: nowrap; }
-.screenshot-remove { position: absolute; top: 11px; right: 11px; width: 30px; height: 30px; display: grid; place-items: center; padding: 0; color: #fff; border: 1px solid rgba(255,255,255,.18); border-radius: 50%; background: rgba(3,3,3,.86); cursor: pointer; }
-.field-note { margin: 9px 0 0; color: #77736c; font-size: .68rem; }
 .follow-up-choice { margin: 3px 0 24px; padding: 17px; border: 1px solid rgba(255,255,255,.09); border-radius: 15px; background: rgba(255,255,255,.025); }
 .follow-up-choice input { position: absolute; opacity: 0; pointer-events: none; }
 .follow-up-choice label { position: relative; display: grid; grid-template-columns: 24px 1fr; column-gap: 12px; cursor: pointer; }
@@ -515,7 +502,6 @@ h2 em, h1 span { color: var(--gold-bright); font-style: normal; }
   .feedback-form-heading { align-items: flex-start; flex-direction: column; gap: 2px; }
   .feedback-actions { flex-direction: column; }
   .feedback-actions .button { width: 100%; }
-  .screenshot-previews { grid-template-columns: 1fr 1fr; }
   .availability-card { padding: 60px 20px; border-radius: 28px; }
   .availability-card > img { width: 88px; height: 88px; }
   .footer-links { grid-template-columns: 1fr 1fr; }
