@@ -1,0 +1,22 @@
+{
+  "name": "songduel-website",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "format:check": "prettier --check index.html products.css script.js package.json eslint.config.js scripts tests",
+    "lint": "eslint script.js scripts tests && html-validate index.html",
+    "typecheck": "tsc --allowJs --checkJs --noEmit --target es2022 --lib dom,dom.iterable,es2022 script.js",
+    "test": "node --test tests/site.test.mjs",
+    "test:browser": "node tests/browser.mjs",
+    "build": "node scripts/build.mjs"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
+    "@playwright/test": "^1.63.0",
+    "eslint": "^10.11.0",
+    "globals": "^17.12.0",
+    "html-validate": "^10.17.0",
+    "prettier": "^3.9.9",
+    "typescript": "^7.0.2"
+  }
+}
