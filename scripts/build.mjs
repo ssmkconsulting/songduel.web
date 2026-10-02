@@ -2,6 +2,9 @@ import { cp, mkdir, rm } from "node:fs/promises";
 export const productionFiles = [
   "index.html",
   "privacy.html",
+  "game-privacy.html",
+  "game-support.html",
+  "game-terms.html",
   "terms.html",
   "support.html",
   "404.html",

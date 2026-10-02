@@ -4,4 +4,7 @@
   <url><loc>https://songduel.app/privacy.html</loc><priority>0.5</priority></url>
   <url><loc>https://songduel.app/terms.html</loc><priority>0.5</priority></url>
   <url><loc>https://songduel.app/support.html</loc><priority>0.7</priority></url>
+  <url><loc>https://songduel.app/game-privacy.html</loc><priority>0.5</priority></url>
+  <url><loc>https://songduel.app/game-support.html</loc><priority>0.5</priority></url>
+  <url><loc>https://songduel.app/game-terms.html</loc><priority>0.5</priority></url>
 </urlset>
